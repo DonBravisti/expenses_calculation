@@ -86,8 +86,32 @@ class MoneyApp extends StatelessWidget {
       ),
       body: const Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        
+        children: [AppTotal()],
       ),
+    );
+  }
+}
+
+class AppTotal extends StatelessWidget {
+  const AppTotal({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Container(
+          width: 500,
+          margin: const EdgeInsets.all(15),
+          padding: const EdgeInsets.all(15),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15), color: widgetBackColor),
+          child: const Text(
+            "Итого: $totalMoney ₽",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 25,
+              color: Colors.white,
+            ),
+          )),
     );
   }
 }
