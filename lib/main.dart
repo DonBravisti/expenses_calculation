@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 final splashPageBackColor = Colors.green[900];
 const mainColorDark = Color.fromARGB(255, 9, 42, 0);
@@ -9,11 +10,12 @@ const iconColor = Color.fromARGB(255, 251, 205, 1);
 const appIcon = Icons.attach_money;
 
 const totalMoney = "10 000";
+const currentDate = "12 апреля";
 
 void main() {
   runApp(const MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: MoneyApp(),
+    home: SplashPage(),
   ));
 }
 
@@ -22,10 +24,10 @@ class SplashPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Future.delayed(const Duration(seconds: 2), () {
-    //   Navigator.of(context)
-    //       .push(MaterialPageRoute(builder: (context) => const MoneyApp()));
-    // });
+    Future.delayed(const Duration(seconds: 2), () {
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (context) => const MoneyApp()));
+    });
 
     return Container(
       color: splashPageBackColor,
@@ -86,7 +88,7 @@ class MoneyApp extends StatelessWidget {
       ),
       body: const Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [AppTotal()],
+        children: [AppTotal(), AppTodayExpenses()],
       ),
     );
   }
@@ -111,6 +113,48 @@ class AppTotal extends StatelessWidget {
               fontSize: 25,
               color: Colors.white,
             ),
+          )),
+    );
+  }
+}
+
+class AppTodayExpenses extends StatelessWidget {
+  const AppTodayExpenses({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Container(
+          width: 500,
+          margin: const EdgeInsets.all(15),
+          padding: const EdgeInsets.all(15),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15), color: widgetBackColor),
+          child: Column(
+            children: [
+              const Text(
+                "Сегодня, $currentDate",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    fontSize: 19,
+                    color: Colors.white,
+                    decoration: TextDecoration.underline,
+                    decorationColor: Colors.white,
+                    decorationThickness: 1.5),
+              ),
+              Container(
+                width: 150,
+                margin: const EdgeInsets.only(top: 30, bottom: 30),
+                child: const Text(
+                  "Сегодня расходов не было",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 19,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ],
           )),
     );
   }
