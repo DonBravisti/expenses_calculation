@@ -13,7 +13,7 @@ const totalMoney = "10 000";
 void main() {
   runApp(const MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: SplashPage(),
+    home: MoneyApp(),
   ));
 }
 
@@ -53,3 +53,41 @@ class SplashPage extends StatelessWidget {
   }
 }
 
+class MoneyApp extends StatelessWidget {
+  const MoneyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: mainColorDark,
+      appBar: AppBar(
+        backgroundColor: mainColorLight,
+        iconTheme: const IconThemeData(color: Color.fromARGB(255, 65, 63, 63)),
+        title: const Center(
+          child: Icon(
+            appIcon,
+            size: 40,
+            color: iconColor,
+          ),
+        ),
+        actions: const [
+          SizedBox(
+            width: 60,
+            height: 40,
+          )
+        ],
+      ),
+      drawer: Drawer(
+        child: Container(
+            padding: const EdgeInsets.all(30),
+            color: mainColorLight,
+            alignment: Alignment.bottomRight,
+            child: const Icon(appIcon, color: iconColor, size: 80)),
+      ),
+      body: const Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        
+      ),
+    );
+  }
+}
